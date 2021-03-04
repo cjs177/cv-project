@@ -1,0 +1,36 @@
+*{
+    background: lightslategray;
+    margin: 8px;
+}
+
+.eduContainer, .genContainer, .expContainer{
+    background: slateblue;
+    margin: 10px 35vw;
+    border: 2px black solid;
+    display: inline-block;
+    padding: 30px 150px;
+    border-radius: 5px;
+}
+
+input, label, form, textarea{
+    background: slateblue;
+    font-size: 1.1rem;
+}
+
+input, textarea{
+    border: black solid 1px;
+}
+
+button{
+ background: rebeccapurple;
+ color: rgb(253, 152, 0);
+ padding: 10px 30px;
+ font-size: 1rem;
+ margin-top: 8px;
+ border-radius: 8px;
+ border: black 1px solid;
+}
+
+button:hover{
+    background: rgb(7, 47, 223);
+}
