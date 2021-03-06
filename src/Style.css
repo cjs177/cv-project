@@ -1,6 +1,11 @@
 *{
     background: lightslategray;
-    margin: 8px;
+    margin: 8px 0px;
+}
+
+h1{
+    text-align: center;
+
 }
 
 .eduContainer, .genContainer, .expContainer{
@@ -12,9 +17,23 @@
     border-radius: 5px;
 }
 
-input, label, form, textarea{
+.eduEditContainer, .genEditContainer, .expEditContainer{
+    background: slateblue;
+    margin: 10px 35vw;
+    border: 2px black solid;
+    display: inline-block;
+    padding: 30px 150px;
+    border-radius: 5px;
+    width: 275px;
+}
+
+input, label, form, textarea, p{
     background: slateblue;
     font-size: 1.1rem;
+}
+
+p {
+    display: inline;
 }
 
 input, textarea{

@@ -1,81 +1,72 @@
-import React, {Component} from "react";
+import React, { useState } from "react";
 import "../Style.css"
 
-class Experience extends Component{
-    constructor(){
-        super();
+const Experience = () =>{
+    const [displayForm, setDisplayForm] = useState(true);
 
-        this.state = {
-            displayForm: true,
-        }
+    const [companyValue, setCompanyValue] = useState("");
 
+    const [positionValue, setpositionValue] = useState("");
+
+    const [tasksValue, setTasksValue] = useState("");
+
+    const [startValue, setStartValue] = useState("");
+
+    const [endValue, setEndValue] = useState("");
+
+    const updateCompany= (e) => {
+        setCompanyValue(e.target.value);
     }
-    sumbitCompanyName= (e) => {
-        this.setState({
-            companyValue: e.target.value,
-        });
-    };
 
-    sumbitPostition= (e) => {
-        this.setState({
-            positionValue: e.target.value,
-        });
-    };
+    const updatePosition= (e) => {
+        setpositionValue(e.target.value);
+    }
 
-    sumbitTasks= (e) => {
-        this.setState({
-            tasksValue: e.target.value,
-        });
-    };
+    const updateTasks= (e) => {
+        setTasksValue(e.target.value);
+    }
 
-    sumbitStartDate= (e) => {
-        this.setState({
-            startValue: e.target.value,
-        });
-    };
+    const updateStart= (e) => {
+        setStartValue(e.target.value);
+    }
 
-    sumbitEndDate= (e) => {
-        this.setState({
-            endValue: e.target.value,
-        });
-    };
 
-    submitButton = (e) => {
+    const updateEnd= (e) => {
+        setEndValue(e.target.value);
+    }
+
+
+    const submitButton = (e) => {
         e.preventDefault();
-        this.setState({
-            displayForm: false,
-        });
+        setDisplayForm(false);
     };
 
-    editButton = (e) => {
+    const editButton = (e) => {
         e.preventDefault();
-        this.setState({
-            displayForm: true,
-        });
+        setDisplayForm(true);
     };
+   
 
-    render(){
-        const { displayForm } = this.state;
         if(!displayForm){
             return (
-                <div class="genContainer">
-                    <form onSubmit={this.editButton}>
+                <div class="expEditContainer">
+                    <form onSubmit={editButton}>
                     Company:
-                    {this.state.companyValue}
+                    {companyValue}
                     <br/>
                     Position: 
-                    {this.state.positionValue}
+                    {positionValue}
                     <br/>
                     Main Tasks: 
-                    {this.state.tasksValue}
+                    {tasksValue}
                     <br/>
                     Start Date: 
-                    {this.state.startValue}
+                    {startValue}
                     <br/>
                     End Date: 
-                    {this.state.endValue}
+                    {endValue}
                     <br/>
-                    <button type="submit" id="expEdit" onClick={this.state.editButton}>Edit</button>
+                    <button type="submit" id="expEdit" onClick={editButton}>Edit</button>
                     </form>
                 </div>
             );
@@ -83,27 +74,26 @@ class Experience extends Component{
 
         return(
             <div class="expContainer">
-                <form onSubmit={this.submitButton}>
+                <form onSubmit={submitButton}>
                     <label htmlFor="companyName">Company Name:</label>
-                    <input type="text" id="companyName" onChange={this.sumbitCompanyName} value={this.state.companyValue} required/>
+                    <input type="text" id="companyName" onChange={updateCompany} value={companyValue} required/>
                     <br/>
                     <label htmlFor="positiontitle">Position Title:</label>
-                    <input type="text" id="positionTitle" onChange={this.sumbitPostition} value={this.state.positionValue} required/>
+                    <input type="text" id="positionTitle" onChange={updatePosition} value={positionValue} required/>
                     <br/>
                     <label htmlFor="mainTasks">Main Tasks:</label>
-                    <textarea id="mainTasks" onChange={this.sumbitTasks} value={this.state.tasksValue} required/>
+                    <textarea id="mainTasks" onChange={updateTasks} value={tasksValue} required/>
                     <br/>
                     <label htmlFor="dateStarted">Start Date:</label>
-                    <input type="date" id="dateStarted" onChange={this.sumbitStartDate} value={this.state.startValue} required/>
+                    <input type="date" id="dateStarted" onChange={updateStart} value={startValue} required/>
                     <br/>
                     <label htmlFor="dateEnded">End Date:</label><br/>
-                    <input type="date" id="dateEnded" onChange={this.sumbitEndDate} value={this.state.endValue} required/>
+                    <input type="date" id="dateEnded" onChange={updateEnd} value={endValue} required/>
                     <br/>
-                    <button type="submit" id="expSubmit" onClick={this.state.submitButton}>Submit</button>
+                    <button type="submit" id="expSubmit" onClick={submitButton}>Submit</button>
                 </form>
             </div>
         );
-    }
 }
 
 export default Experience;

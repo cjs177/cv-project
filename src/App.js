@@ -6,31 +6,12 @@ import "./Style.css";
 class App extends Component {
   constructor(){
     super();
-    this.state = {
-      showForm: true,
-    };
   }
-
-  displayForm(props){
-    if(!props.display) {
-      return null;
-    }
-    return(
-      <div className="formSheet">
-          <General onSubmitTask = {this.onSubmitTask}/><br/> 
-      </div>
-    );
-  }
-
-  onSubmitTask() {
-    this.setState(state => ({
-      showForm: !state.showForm
-    }));
-  };
 
   render(){
   return (
     <div>
+          <h1>CV App</h1>
           <General/><br/>
           <Education/><br/>
           <Experience/>

@@ -1,63 +1,53 @@
-import React, {Component} from "react";
+import React, { useState } from "react";
 import "../Style.css"
 
-class Education extends Component{
-    constructor(props){
-        super(props);
+const Education = () =>{
+    const [displayForm, setDisplayForm] = useState(true);
 
-        this.state = {
-            displayEdu: true,
-        }
+    const [schoolNameValue, setSchoolNameValue] = useState("");
 
+    const [majorValue, setMajorValue] = useState("");
+
+    const [studyDateValue, setStudyDateValue] = useState("");
+
+    const updateSchoolName= (e) => {
+        setSchoolNameValue(e.target.value);
     }
-    sumbitSchoolName= (e) => {
-        this.setState({
-            schoolValue: e.target.value,
-        });
-    };
 
-    sumbitMajor= (e) => {
-        this.setState({
-            majorValue: e.target.value,
-        });
-    };
+    const updateMajor= (e) => {
+        setMajorValue(e.target.value);
+    }
 
-    sumbitStudyDate= (e) => {
-        this.setState({
-            studyValue: e.target.value,
-        });
-    };
+    const updateDateValue= (e) => {
+        setStudyDateValue(e.target.value);
+    }
 
-    submitButton = (e) => {
+
+    const submitButton = (e) => {
         e.preventDefault();
-        this.setState({
-            displayEdu: false,
-        });
+        setDisplayForm(false);
     };
 
-    editButton = (e) => {
+    const editButton = (e) => {
         e.preventDefault();
-        this.setState({
-            displayEdu: true,
-        });
+        setDisplayForm(true);
     };
 
-    render(){
-        const { displayEdu } = this.state;
-        if(!displayEdu){
+
+        if(!displayForm){
             return (
-                <div class="eduContainer">
-                    <form onSubmit={this.editButton}>
-                    School:
-                    {this.state.schoolValue}
+                <div class="eduEditContainer">
+                    <form onSubmit={editButton}>
+                    <p>School:</p>
+                    {schoolNameValue}
                     <br/>
-                    Major: 
-                    {this.state.majorValue}
+                    <p>Major:</p>
+                    {majorValue}
                     <br/>
-                    Study Date: 
-                    {this.state.studyValue}
+                    <p>Study Date:</p>
+                    {studyDateValue}
                     <br/>
-                    <button type="submit" id="eduEdit" onClick={this.state.editButton}>Edit</button>
+                    <button type="submit" id="eduEdit" onClick={editButton}>Edit</button>
                     </form>
                 </div>
             );
@@ -65,21 +55,20 @@ class Education extends Component{
 
         return(
             <div class="eduContainer">
-                <form onSubmit={this.submitButton}>
+                <form onSubmit={submitButton}>
                     <label htmlFor="schoolName">School:</label>
-                    <input type="text" id="schoolName" onChange={this.sumbitSchoolName} value={this.state.schoolValue} required/>
+                    <input type="text" id="schoolName" onChange={updateSchoolName} value={schoolNameValue} required/>
                     <br/>
                     <label htmlFro="majorTitle">Major:</label>
-                    <input type="text" id="majorTitle" onChange={this.sumbitMajor} value={this.state.majorValue} required/>
+                    <input type="text" id="majorTitle" onChange={updateMajor} value={majorValue} required/>
                     <br/>
                     <label htmlFor="studyDate">Date of Study:</label>
-                    <input type="date" id="studyDate" onChange={this.sumbitStudyDate} value={this.state.studyValue} required/>
+                    <input type="date" id="studyDate" onChange={updateDateValue} value={studyDateValue} required/>
                     <br/>
-                    <button type="submit" id="eduSubmit" onClick={this.state.submitButton}>Submit</button>
+                    <button type="submit" id="eduSubmit" onClick={submitButton}>Submit</button>
                 </form>
             </div>
         );
-    }
 }
 
 export default Education;
